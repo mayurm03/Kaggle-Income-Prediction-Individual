@@ -69,10 +69,9 @@ Xtrain, Xtest, Ytrain, Ytest = train_test_split(X, y, test_size=0.33, random_sta
 #print(df)
 
 # Fitting Simple Linear Regression to the Training set
-from sklearn.ensemble import RandomForestRegressor
-regressor = RandomForestRegressor()
-fitResult = regressor.fit(Xtrain, Ytrain)
-YPredTest = regressor.predict(Xtest)
+from sklearn.linear_model import BayesianRidge
+ridge = BayesianRidge()
+reg = ridge.fit(X, Y)
 
 #print('Intercept: \n', regressor.intercept_)
 #print('Coefficients: \n', regressor.coef_)
@@ -80,7 +79,7 @@ YPredTest = regressor.predict(Xtest)
 
 df2.head()
 # Predicting the Test set results
-y_pred = regressor.predict(x1)
+y_pred = reg.predict(x1)
 #print(y_pred)
 
 df2['Income']=y_pred
